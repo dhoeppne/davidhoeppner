@@ -19,3 +19,9 @@ dioxus-logger = "0.5.0"
 default = []
 server = ["dioxus/axum"]
 web = ["dioxus/web"]
+
+[package.metadata.scripts]
+serve = "dx clean && dx serve --platform fullstack"
+# build_release = "dx build --features web --release"
+# ssr = "cargo run-script build && cargo run --features ssr --release"
+# ssr_hot_reload = "cargo run-script build && dx serve --features ssr --hot-reload --platform desktop"

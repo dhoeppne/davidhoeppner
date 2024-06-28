@@ -1,10 +1,11 @@
-body {
-    background-color: #111216;
+html, body, div#main {
+    height: 100%;
+    margin: 0;
 }
 
 #main {
-    margin: 0;
     display: flex;
+    background-color: #ffffff;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -35,6 +36,19 @@ body {
     cursor: pointer;
 }
 
-#header {
-    max-width: 1200px;
+nav {
+    background-color: #2286dd;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    background-color: #2286dd;
+    color: white;
+    text-align: center;
+    padding: 10px;
 }

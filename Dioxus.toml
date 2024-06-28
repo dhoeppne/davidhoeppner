@@ -1,7 +1,7 @@
 [application]
 
 # App (Project) Name
-name = "davidhoeppner"
+name = "davidhoeppner.ca"
 
 # Dioxus App Default Platform
 # desktop, web
@@ -16,7 +16,7 @@ asset_dir = "assets"
 [web.app]
 
 # HTML title tag content
-title = "davidhoeppner"
+title = "davidhoeppner.ca"
 
 [web.watcher]
 
@@ -31,7 +31,7 @@ watch_path = ["src", "assets"]
 
 # CSS style file
 
-style = []
+style = ["./assets/main.css"]
 
 # Javascript code file
 script = []
@@ -41,3 +41,7 @@ script = []
 # Javascript code file
 # serve: [dev-server] only
 script = []
+
+[bundle]
+# The list of files to include in the bundle. These can contain globs.
+resources = ["main.css", "header.svg", "**/*.png"]
