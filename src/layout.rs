@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::pages::{Home, About, Experience, Work, Contact, PageNotFound};
+use crate::pages::{Home, About, Projects, Work, Contact, PageNotFound};
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 pub enum Route {
@@ -10,7 +10,7 @@ pub enum Route {
         #[route("/about")]
         About {},
         #[route("/experience")]
-        Experience {},
+        Projects {},
         #[route("/work")]
         Work {},
         #[route("/contact")]
@@ -49,8 +49,8 @@ fn Header() -> Element {
                 }
                 li {
                     Link {
-                        to: Route::Experience {},
-                        "Experience"
+                        to: Route::Projects {},
+                        "Projects"
                     }
                 }
                 li {
