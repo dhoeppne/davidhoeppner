@@ -1,20 +1,24 @@
 use dioxus::prelude::*;
 
-use crate::pages::{Home, About, Experience, Work, Contact};
+use crate::pages::{Home, About, Experience, Work, Contact, PageNotFound};
 
 #[derive(Clone, Routable, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
 pub enum Route {
     #[layout(Wrapper)]
         #[route("/")]
         Home {},
-        #[route("/about/:id")]
-        About { id: i32 },
+        #[route("/about")]
+        About {},
         #[route("/experience")]
         Experience {},
         #[route("/work")]
         Work {},
         #[route("/contact")]
         Contact {},
+        #[route("/:..route")]
+        PageNotFound {
+            route: Vec<String>,
+        },
 }
 
 #[component]
@@ -39,7 +43,7 @@ fn Header() -> Element {
                 }
                 li {
                     Link {
-                        to: Route::About {id: 1},
+                        to: Route::About {},
                         "About"
                     }
                 }
