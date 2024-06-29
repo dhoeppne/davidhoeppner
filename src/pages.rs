@@ -95,7 +95,6 @@ pub fn PageNotFound(route: Vec<String>) -> Element {
 #[component]
 pub fn Home() -> Element {
     let mut count = use_signal(|| 0);
-    let mut text = use_signal(|| String::from("..."));
     let testing = false;
     let first = rsx! { h1 { "Hi, my name is"}};
     let second = rsx! { h2 { "David Hoeppner"}};
@@ -114,17 +113,6 @@ pub fn Home() -> Element {
           h1 { "High-Five counter: {count}" }
           button { onclick: move |_| count += 1, "Go up!" }
           button { onclick: move |_| count -= 1, "Go down!" }
-          button {
-            onclick: move |_| async move {
-                if let Ok(data) = get_server_data().await {
-                    tracing::info!("Client received: {}", data);
-                    text.set(data.clone());
-                    post_server_data(data).await.unwrap();
-                }
-            },
-            "Get Server Data"
-          }
-          p { "Server data: {text}" }
         }
       }
       else {
@@ -138,15 +126,4 @@ pub fn Home() -> Element {
 
 
     }
-}
-
-#[server(PostServerData)]
-async fn post_server_data(data: String) -> Result<(), ServerFnError> {
-    info!("Server received: {}", data);
-    Ok(())
-}
-
-#[server(GetServerData)]
-async fn get_server_data() -> Result<String, ServerFnError> {
-    Ok("Hello from the server!".to_string())
 }
